@@ -14,16 +14,9 @@ Socket de rede em python
 
 import socket
 HOST = "" #Endereço do Servidor -> valor default: loopback (127.0.0.1 - está na mesma máquina que o cliente)
-PORT = 8921 #porta que o servidor está
+PORT = 9090 #porta que o servidor está
 tcp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-dest = (HOST, PORT);
-msg = "Envio de Mensagem"
-tcp.bind((HOST, porta))
-tcp.listen(1)
 
-while True:
-    e = tcp.accept()
-    print("conexão estabelecida com ",e)
-    tcp.send (msg.encode('ascii')) #casting da mensagem em texto puro para bits
-    msg = input()
-tcp.close()
+tcp.conect((HOST, PORT))
+dados = tcp.recv(1024) #limitacao do tamanho das mensagens (1024 bytes)
+print(dados.decode('ascii'))
