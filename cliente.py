@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 '''
 Trabalho de Redes de Computadores
 Maely da Silva Campos - 382941
@@ -16,14 +17,12 @@ import socket
 HOST = "" #Endereço do Servidor -> valor default: loopback (127.0.0.1 - está na mesma máquina que o cliente)
 PORT = 8921 #porta que o servidor está
 tcp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-dest = (HOST, PORT);
 msg = "Envio de Mensagem"
-tcp.bind((HOST, porta))
+tcp.bind((HOST, PORT))
 tcp.listen(1)
 
 while True:
-    e = tcp.accept()
+    c,e = tcp.accept()
     print("conexão estabelecida com ",e)
-    tcp.send (msg.encode('ascii')) #casting da mensagem em texto puro para bits
-    msg = input()
-tcp.close()
+    c.send (msg.encode('ascii')) #casting da mensagem em texto puro para bits
+    tcp.close()

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 '''
 Trabalho de Redes de Computadores
 Maely da Silva Campos - 382941
@@ -13,10 +14,10 @@ Socket de rede em python
 #SOCK_DGRAM - conexão UDP; suporte a datagramas (sem conexão e não confiável)
 
 import socket
-HOST = "" #Endereço do Servidor -> valor default: loopback (127.0.0.1 - está na mesma máquina que o cliente)
-PORT = 9090 #porta que o servidor está
 tcp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+HOST = "" #Endereço do Servidor -> valor default: loopback (127.0.0.1 - está na mesma máquina que o cliente)
+PORT = 8921 #porta que o servidor está
 
-tcp.conect((HOST, PORT))
+tcp.connect((HOST, PORT))
 dados = tcp.recv(1024) #limitacao do tamanho das mensagens (1024 bytes)
-print(dados.decode('ascii'))
+print(dados.decode("ascii"))
