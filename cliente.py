@@ -14,15 +14,10 @@ Socket de rede em python
 #SOCK_DGRAM - conexão UDP; suporte a datagramas (sem conexão e não confiável)
 
 import socket
+tcp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 HOST = "" #Endereço do Servidor -> valor default: loopback (127.0.0.1 - está na mesma máquina que o cliente)
 PORT = 8921 #porta que o servidor está
-tcp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-msg = "Envio de Mensagem"
-tcp.bind((HOST, PORT))
-tcp.listen(1)
 
-while True:
-    c,e = tcp.accept()
-    print("conexão estabelecida com ",e)
-    c.send (msg.encode('ascii')) #casting da mensagem em texto puro para bits
-    tcp.close()
+tcp.connect((HOST, PORT))
+dados = tcp.recv(1024) #limitacao do tamanho das mensagens (1024 bytes)
+print(dados.decode("ascii"))
